@@ -11,11 +11,10 @@
 | Função | Tipo | ROTA |
 | ---|---|--- |
 | Criar Novo Usuario | Get | `/createUser/usuarios/password/email` |
-| Criar Novo Produto | Get | `/createProduto/nome/descricao/idUsuario` |
+| Criar Novo Produto | Get | `/createProduto/nome/checked/idUsuario` |
 | Criar Tabela de Usuarios | Get | `/createModelUser` |
 | Criar Tabela de Produtos | Get | `/createModelProduto` |
-| Deletar Usuarios (deleta todos | Get | `/deleteUser/:idUsuario` |
-| produtos desse Usuarios) |      |
+| Deletar Usuarios (deleta todos produtos desse Usuarios | Get | `/deleteUser/:idUsuario` |
 | Deletar Produtos | Get  | `/DeleteProduto/:idProduto` |
 | Autenticar Usuario | Post | `/autenticate` |
 | Descriptar hash do user la do front | Post | `/descryptUser` |
