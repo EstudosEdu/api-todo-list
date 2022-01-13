@@ -42,9 +42,9 @@ module.exports = app.get('/createUser/:user/:password/:email', async (req, res) 
     res.send('Usuario criado com sucesso!');
 });
 
-module.exports = app.get('/createProduto/:nome/:descricao/:idUser', async (req, res) => {
-    const { nome, descricao, idUser } = req.params;
-    await db.createProduto(nome, descricao, idUser);
+module.exports = app.get('/createProduto/:nome/:checked/:idUser', async (req, res) => {
+    const { nome, checked, idUser } = req.params;
+    await db.createProduto(nome, checked, idUser);
     res.send('Produto criado com sucesso!');
 })
 
@@ -60,4 +60,29 @@ module.exports = app.get('/deleteUser/:idUser', async (req, res) => {
 module.exports = app.get('/DeleteProduto/:idProduto', async (req, res) => {
     await db.deleteProduto(idProduto)
     res.send('Produto Deletado!');
+});
+
+// Rotas de CRUD do produto ==============================================
+module.exports = app.post('/ReadProducts', async (req, res) => {
+    const {userId} = req.body;
+    const produtos = await db.readProducts(userId)
+    res.json(produtos);
+});
+
+module.exports = app.post('/CreateProducts', async (req, res) => {
+    const {name, checked, userId} = req.body;
+    const createProd = await db.CreateProducts(name, checked, userId)
+    res.json(createProd);
+});
+
+module.exports = app.post('/UpdateProducts', async (req, res) => {
+    const {id_Prod, checked} = req.body;
+    const updateProd = await db.UpdateProducts(id_Prod, checked)
+    res.json(updateProd);
+});
+
+module.exports = app.post('/DeleteProducts', async (req, res) => {
+    const {idProduto} = req.body;
+    const DeleteProd = await db.DeleteProduto(idProduto)
+    res.send(DeleteProd);
 });

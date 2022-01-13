@@ -19,3 +19,7 @@
 | Deletar Produtos | Get  | `/DeleteProduto/:idProduto` |
 | Autenticar Usuario | Post | `/autenticate` |
 | Descriptar hash do user la do front | Post | `/descryptUser` |
+| Criar Novo Produto | Post | `/CreateProducts` |
+| Listar Todos os Produtos do usuario | Post | `/ReadProducts` |
+| Editar produto | Post | `/UpdateProducts` |
+| Deletar Produto | Post | `/DeleteProducts` |

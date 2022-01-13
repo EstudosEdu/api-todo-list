@@ -6,8 +6,8 @@ const tableProduto = {
         name: {
             type: DataTypes.STRING
         },
-        descricao: {
-            type: DataTypes.STRING
+        checked: {
+            type: DataTypes.BOOLEAN
         }
     },
     options: { freezeTableName: true }

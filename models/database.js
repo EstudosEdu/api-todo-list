@@ -59,12 +59,12 @@ class ConnectionDatabase
         )
     }
 
-    async createProduto(nome, descricao, idUser) {
+    async createProduto(nome, checked, idUser) {
         const table = await this.TableProduto;
         await table.create(
             {
                 name: nome,
-                descricao: descricao,
+                checked: checked,
                 id_User: idUser
             }
         )
@@ -113,11 +113,61 @@ class ConnectionDatabase
 
     async user_descript(dado)
     {
-        var descriptando = CryptoJS.AES.decrypt(dado, '1234');
-        var userOriginal = descriptando.toString(CryptoJS.enc.Utf8);
+        let descriptando = CryptoJS.AES.decrypt(dado, '1234');
+        let userOriginal = descriptando.toString(CryptoJS.enc.Utf8);
         return userOriginal
     }
 
+    async readProducts(userId)
+    {
+        const Produtos = await this.TableProduto;
+        let descriptando = CryptoJS.AES.decrypt(userId, '1234');
+        let userId_Original = descriptando.toString(CryptoJS.enc.Utf8);
+        const Todos_Produtos = await Produtos.findAll({
+            where: {
+                id_User: userId_Original
+            }
+        })
+        let [...rows] = Todos_Produtos
+        for(let i = 0; i < rows.length; i++)
+        {
+            rows[i].id_User = userId;
+        }
+        return rows;
+    }
+
+    async CreateProducts(name, checked, id_User)
+    {
+        let descriptando = CryptoJS.AES.decrypt(id_User, '1234');
+        let userId_Original = descriptando.toString(CryptoJS.enc.Utf8);
+        const Produtos = await this.TableProduto;
+        await Produtos.create(
+            {
+                name: name,
+                checked: checked,
+                id_User: userId_Original
+            }
+        )
+        return 'Produto Criado Com Sucesso!'
+    }
+
+    async UpdateProducts(id_Prod, checked)
+    {
+        const Produtos = await this.TableProduto;
+        const update = await Produtos.findByPk(id_Prod);
+        update.checked = checked;
+        update.save();
+
+        return 'Update Feito Com Sucesso!';
+    }
+
+    async DeleteProduto(idProduto)
+    {
+        const Produtos = await this.TableProduto;
+        const Delete = await Produtos.findByPk(idProduto);
+        Delete.destroy();
+        return 'Produto Excluido Com Sucesso!'   
+    }
 }
 
 module.exports = ConnectionDatabase;
