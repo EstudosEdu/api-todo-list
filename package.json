@@ -1,0 +1,29 @@
+{
+  "name": "relacionamento-simples",
+  "version": "1.0.0",
+  "description": "- #### Feito somente para estudos e tirar duvidas; ---- ## Foram usados: - Insomnia para testes da API; - Node.js; - JavaScript Vanilla; - Sequelize ( ORM );",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EstudosEdu/relacionamento-simples-sequelize.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EstudosEdu/relacionamento-simples-sequelize/issues"
+  },
+  "homepage": "https://github.com/EstudosEdu/relacionamento-simples-sequelize#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "express": "^4.17.2",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.12.5"
+  }
+}
