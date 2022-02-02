@@ -58,7 +58,7 @@ module.exports = app.get('/deleteUser/:idUser', async (req, res) => {
 });
 
 module.exports = app.get('/DeleteProduto/:idProduto', async (req, res) => {
-    await db.deleteProduto(idProduto)
+    await db.deleteProduto(req.params.idProduto)
     res.send('Produto Deletado!');
 });
 
@@ -67,6 +67,13 @@ module.exports = app.post('/ReadProducts', async (req, res) => {
     const {userId} = req.body;
     const produtos = await db.readProducts(userId)
     res.json(produtos);
+});
+
+module.exports = app.get('/ReadProducts/:userId', async (req, res) => {
+    const userId = req.params.userId;
+    console.log(userId);
+    //const produtos = await db.readProducts(userId)
+    //res.json(produtos);
 });
 
 module.exports = app.post('/CreateProducts', async (req, res) => {

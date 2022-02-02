@@ -81,8 +81,8 @@ class ConnectionDatabase
 
     async deleteProduto(idProduto)
     {
-        const tableProduto = await this.tableProduto;
-        const Delete = tableProduto.findByPk(idProduto);
+        const table = await this.TableProduto;
+        const Delete = await table.findByPk(idProduto);
         Delete.destroy();
     }
 
@@ -148,7 +148,7 @@ class ConnectionDatabase
                 id_User: userId_Original
             }
         )
-        return 'Produto Criado Com Sucesso!'
+        return true;
     }
 
     async UpdateProducts(id_Prod, checked)
